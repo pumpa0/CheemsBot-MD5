@@ -8,7 +8,6 @@ const path = require('path')
 const hx = require('hxz-api')
 const axios = require('axios')
 const chalk = require('chalk')
-const yts = require('yt-search')
 const xfar = require('xfarr-api')
 const google = require('google-it')
 const { exec, spawn, execSync } = require("child_process")
@@ -76,18 +75,6 @@ let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
 let _autostick = db.data.others.autostick = []
 let autosticker = db.data.others.autosticker = []
-let ntnsfw = db.data.others.nsfw = []
-let ntvirtex = db.data.others.ntvirtex = []
-let ntilinkytvid = db.data.others.ntilinkytvid = []
-let ntilinkytch = db.data.others.ntilinkytch = []
-let ntilinkig = db.data.others.ntilinkig = []
-let ntilinkfb = db.data.others.ntilinkfb = []
-let ntilinktt = db.data.others.ntilinktt = []
-let ntilinktg = db.data.others.ntilinktg = []
-let ntilinktwt = db.data.others.ntilinktwt = []
-let ntilinkall = db.data.others.ntilinkall = []
-let ntwame = db.data.others.ntwame = []
-let nttoxic = db.data.others.nttoxic = []
 let xeonysticker = JSON.parse(fs.readFileSync('./XeonMedia/theme/Media-Store-Karne-Ke-Liye/sticker.json'))
 let xeonyaudio = JSON.parse(fs.readFileSync('./XeonMedia/theme/Media-Store-Karne-Ke-Liye/audio.json'))
 let xeonyimage = JSON.parse(fs.readFileSync('./XeonMedia/theme/Media-Store-Karne-Ke-Liye/image.json'))
