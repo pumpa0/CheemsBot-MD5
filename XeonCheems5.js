@@ -260,7 +260,6 @@ jumlahharian = `${dataa.value}`
 }
 
 // Autosticker gc
-        if (isAutoSticker) {
             if (/image/.test(mime) && !/webp/.test(mime)) {
                 let mediac = await quoted.download()
                 await XeonBotInc.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
@@ -270,9 +269,8 @@ jumlahharian = `${dataa.value}`
                 let mediac = await quoted.download()
                 await XeonBotInc.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
             }
-        }
+        
         //Autosticker pc
-                if (isAutoStick) {
             if (/image/.test(mime) && !/webp/.test(mime)) {
                 let mediac = await quoted.download()
                 await XeonBotInc.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
@@ -282,7 +280,7 @@ jumlahharian = `${dataa.value}`
                 let mediac = await quoted.download()
                 await XeonBotInc.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
             }
-        }
+        
         // Respon Cmd with media
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
         let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
@@ -304,9 +302,8 @@ jumlahharian = `${dataa.value}`
         }
         
         switch(command) {
-        case 'sticker': case 's': case 'stickergif': case 'sgif': {
+        case 'sticker': case 's': case 'stickergif': case 'sgif': case 'stiker': {
             if (!quoted) throw `*Reply Video/Image With Caption* ${prefix + command}`
-            m.reply(mess.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
                 let encmedia = await XeonBotInc.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
@@ -435,6 +432,10 @@ jumlahharian = `${dataa.value}`
                 await fs.unlinkSync(media)
             }
             break
+            case 'menu': {
+            	m.reply(`[ BOT STIKER ]\n\nKirim Gambar atau Video Dengan Caption *.stiker*`)
+            }
+            break
             /////////////////////////~~~~~~~~~~~~~\\\\\\\\\\
             default:
                 if (budy.startsWith('=>')) {
@@ -471,25 +472,6 @@ jumlahharian = `${dataa.value}`
                         if(err) return m.reply(err)
                         if (stdout) return m.reply(stdout)
                     })
-                }
-			
-		if (m.chat.endsWith('@s.whatsapp.net') && isCmd) {
-                    this.anonymous = this.anonymous ? this.anonymous : {}
-                    let room = Object.values(this.anonymous).find(room => [room.a, room.b].includes(m.sender) && room.state === 'CHATTING')
-                    if (room) {
-                        if (/^.*(next|leave|start)/.test(m.text)) return
-                        if (['.next', '.leave', '.stop', '.start', 'Cari Partner', 'Keluar', 'Lanjut', 'Stop'].includes(m.text)) return
-                        let other = [room.a, room.b].find(user => user !== m.sender)
-                        m.copyNForward(other, true, m.quoted && m.quoted.fromMe ? {
-                            contextInfo: {
-                                ...m.msg.contextInfo,
-                                forwardingScore: 0,
-                                isForwarded: true,
-                                participant: other
-                            }
-                        } : {})
-                    }
-                    return !0
                 }
 			
 		if (isCmd && budy.toLowerCase() != undefined) {
